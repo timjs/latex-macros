@@ -22,7 +22,7 @@
   {\textbf{#1}}
 \newmacro{divert}[1]
   {\textcolor{gray}{#1}}
-\newmacro{enquote}[1]
+\providemacro{enquote}[1]
   {``#1''}
 \newmacro{fixme}[1]
   {\colorbox{yellow}{#1}\marginnote{\colorbox{yellow}{$\star$}}}
@@ -88,20 +88,20 @@
 
 
 %% References %%
-%% NOTE: requires `cleveref`
+%% NOTE: requires `hyperref`
 
-\let\autoref\cref
-\let\Autoref\Cref
-\let\autopageref\cpageref
+% \let\autoref\cref
+\let\Autoref\autoref %% FIXME: doesn't seem to get past all file inclusions...
+% \let\autopageref\cpageref
 
 
 %% Citations %%
 %% NOTE: requires `natbib`
 
-\let\cite\citep
-\let\Cite\Citep
-\let\textcite\citet
-\let\Textcite\Citet
+% \let\cite\citep
+% \let\Cite\Citep
+% \let\textcite\citet
+% \let\Textcite\Citet
 
 
 %% Blocks and Boxes %%
