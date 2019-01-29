@@ -89,10 +89,10 @@
 
 
 %% References %%
-%% NOTE: requires `hyperref`
+%% NOTE: requires `cleveref`
 
 % \let\autoref\cref
-\let\Autoref\autoref %% FIXME: doesn't seem to get past all file inclusions...
+% \let\Autoref\Cref
 % \let\autopageref\cpageref
 
 
@@ -162,6 +162,9 @@
 
 \newmathcommand{llbrace}[open] {\{\!|}
 \newmathcommand{rrbrace}[close]{|\!\}}
+\newmathcommand{llangle}[open] {\<\!\<}
+\newmathcommand{rrangle}[close]{\>\!\>}
+
 
 \newmacro{set}[1]
   {\ensuremath{\{#1\}}}
