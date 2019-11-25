@@ -6,15 +6,15 @@
 %% Fixes %%
 
 % \usepackage{underscore}
-\usepackage{auxhook} %%NOTE: to fix strange \BKM@entry error (https://tex.stackexchange.com/questions/470525/strange-lines-in-front-of-the-document/470532#470532)
+% \usepackage{auxhook} %%NOTE: to fix strange \BKM@entry error (https://tex.stackexchange.com/questions/470525/strange-lines-in-front-of-the-document/470532#470532)
 
 
 %% Fonts %%
 
-% \usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
 % \usepackage[T1]{fontenc}
 %%NOTE: T1 doesn't have the `Th` and `Qu` ligatures :-(
-% \usepackage[OT1]{fontenc}
+\usepackage[OT1]{fontenc}
 
 % \usepackage{stmaryrd}
 % \usepackage{mathtools}
@@ -24,9 +24,9 @@
 % \usepackage{tgpagella}
 % \usepackage{lucidabr}
 
-% \usepackage{libertine}
-% \usepackage[varqu]{zi4}
-% \usepackage[libertine]{newtxmath}
+\usepackage{libertine}
+\usepackage[varqu]{zi4}
+\usepackage[libertine]{newtxmath}
 
 
 %% Programming %%
@@ -38,7 +38,7 @@
 %% Layout %%
 
 % \usepackage{microtype}
-% \usepackage{xspace}
+\usepackage{xspace}
 
 
 %% Additions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,33 +51,33 @@
 
 %% Maths %%
 
-% \usepackage{amsmath}
-\usepackage{amsthm} %%NOTE: should be before font loading because defines \openbox which will also be defined by newtxmath...
+\usepackage{amsmath}
+% \usepackage{amsthm} %%NOTE: should be before font loading because defines \openbox which will also be defined by newtxmath...
 \usepackage{mathpartir}
 
 
 %% Graphics %%
 
-% \usepackage{graphicx}
-% \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{xcolor}
 % \usepackage{dblfloatfix}
-\usepackage[export]{adjustbox}
+% \usepackage[export]{adjustbox}
 % \usepackage[xcolor]{mdframed}
 
 
 %% Tabulations %%
 
-% \usepackage{booktabs}
-% \usepackage{array}
+\usepackage{booktabs}
+\usepackage{array}
 
 
 %% Listings %%
 
-% \usepackage[final]{listings}
+\usepackage[final]{listings}
 
 
 %% References & Bibliography %%
 
-% \usepackage{cleveref}
-% \usepackage{natbib}
+\usepackage{cleveref}
+\usepackage{natbib}
 % \usepackage[natbibapa,nodoi]{apacite}
