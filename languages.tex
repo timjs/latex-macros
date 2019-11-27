@@ -4,8 +4,7 @@
 %% Styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \lstdefinestyle{common}
-  {escapechar=|
-  ,numbersep=-9pt % to make numbers appear inside the column; otherwise they are in the margin
+  {numbersep=-9pt % to make numbers appear inside the column; otherwise they are in the margin
   ,aboveskip=0pt
   ,belowskip=0pt
   }
@@ -88,7 +87,7 @@
 
 \lstdefinelanguage{tasks}
   {sensitive=true
-  ,morekeywords=[1]{let,in,if,then,else,case,of,ref,assert,type}
+  ,morekeywords=[1]{let,in,if,then,else,case,of,do,ref,assert,type}
   ,morekeywords=[2]{Bool,Int,String,Unit,List, Ref,Task, Passenger,Seat,Booking, Snack}
   ,moreemph={a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z as,bs,cs,ds,es,fs,gs,hs,is,js,ks,ls,ms,ns,os,ps,qs,rs,ss,ts,us,vs,ws,xs,ys,zs}
   ,morestring=[b]"
@@ -98,23 +97,28 @@
 \lstdefinestyle{tasks}
   {style=natural
   ,literate=
-    {\\}{{$\lambda$}}1
-    {<<}{{$\<$}}1
-    {>>}{{$\>$ }}1
-    {->}{{$\to$ }}1
-    {==}{{$\equiv$ }}1
-    {/=}{{$\nequiv$ }}1
-    {<=}{{$\leq$ }}1
-    {>=}{{$\geq$ }}1
+    {<<}{{$\<\hskip0.125em$}}1
+    {>>}{{$\,\>$ }}1
+    {->}{{$\rightarrow$\ }}1
+    {<-}{{$\leftarrow$\ }}1
+    {==}{{$\equiv$\ }}1
+    {/=}{{$\nequiv$\ }}1
+    {<=}{{$\leq$\ }}1
+    {>=}{{$\geq$\ }}1
+    {|-}{{$\mapsto$ }}1
     {*}{{$\times$ }}1
     {`elem`}{{$\in$ }}1
     {\\/}{{$\vee$ }}1
     {/\\}{{$\wedge$ }}1
     {>>=}{{$\Then$ }}1
     {>>?}{{$\Next$ }}1
+    {=<<}{{$\From$\ \ }}1
+    {?<<}{{$\Prev$\ \ }}1
     {<&>}{{$\And$ }}1
     {<|>}{{$\Or$ }}1
     {<?>}{{$\Xor$ }}1
+    {when}{{$\Or$}}1
+    {all}{{$\And$}}1
     {++}{{$\pp$ }}1
     {edit}{{$\Edit$}}1
     {enter}{{$\Enter$}}1
