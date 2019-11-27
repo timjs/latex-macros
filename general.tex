@@ -11,6 +11,9 @@
 
 %% Text %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newmacro{separate}
+  {\medskip\noindent}
+
 \providemacro{marginnote}
   {\marginpar}
 \providemacro{smallcaps}
@@ -22,14 +25,24 @@
   {\textbf{#1}}
 \newmacro{divert}[1]
   {\textcolor{gray}{#1}}
-\providemacro{enquote}[1]
+\newmacro{enquote}[1]
   {``#1''}
 \newmacro{fixme}[1]
   {\colorbox{yellow}{#1}\marginnote{\colorbox{yellow}{$\star$}}}
 \newmacro{todo}[1]
   {\textcolor{red}{$\star$}\marginnote{\textcolor{red}{#1}}}
+  % {}
 \newmacro{type}[1]
   {\texttt{#1}}
+
+\newmacro{add}[1]
+  {\textcolor{green}{#1}}
+\newmacro{remove}[1]
+  {\textcolor{red}{#1}}
+\newmacro{change}[1]
+  {\textcolor{orange}{#1}}
+\newmacro{adjust}[2]
+  {\remove{#1} \add{#2}}
 
 \newenvironment{fadeout}
   {\color{gray}}
@@ -43,30 +56,29 @@
   {\end{marginfigure}}
 
 
-
 %% Lists %%
 %% NOTE: requires `paralist`
 
-%% Use compact lists by default
-\renewenvironment{itemize}
-  {\begin{compactitem}}
-  {\end{compactitem}}
-\renewenvironment{enumerate}
-  {\begin{compactenum}}
-  {\end{compactenum}}
-\renewenvironment{description}
-  {\begin{compactdesc}}
-  {\end{compactdesc}}
-%% Define starred versions as in-paragraph-lists
-\newenvironment{itemize*}
-  {\begin{inparaitem}}
-  {\end{inparaitem}}
-\newenvironment{enumerate*}[1][1=(i)]
-  {\begin{inparaenum}[#1]}
-  {\end{inparaenum}}
-\newenvironment{description*}
-  {\begin{inparadesc}}
-  {\end{inparadesc}}
+% %% Use compact lists by default
+% \renewenvironment{itemize}
+%   {\begin{compactitem}}
+%   {\end{compactitem}}
+% \renewenvironment{enumerate}
+%   {\begin{compactenum}}
+%   {\end{compactenum}}
+% \renewenvironment{description}
+%   {\begin{compactdesc}}
+%   {\end{compactdesc}}
+% %% Define starred versions as in-paragraph-lists
+% \newenvironment{itemize*}
+%   {\begin{inparaitem}}
+%   {\end{inparaitem}}
+% \newenvironment{enumerate*}[1][1=(i)]
+%   {\begin{inparaenum}[#1]}
+%   {\end{inparaenum}}
+% \newenvironment{description*}
+%   {\begin{inparadesc}}
+%   {\end{inparadesc}}
 
 
 %% Quotations %%
@@ -121,7 +133,7 @@
 \newmacro{newlogo}[2][1]
   {\ifthenelse{\isempty{#1}}
      {\newlogoaux{#2}{\smallcaps{\lowercase{#2}}}}
-     {\newlogoaux{#1}{\smallcaps{#2}}}}
+     {\newlogoaux{#1}{#2}}}
 \newmacro{newlogoaux}[2]
   {\newmacro{#1}{#2\xspace}}
 
@@ -135,24 +147,49 @@
 \newmacro{newkeyword}[2][1]
   %%FIXME: this is to complicated: {\newoperator{\ifthenelse{\isempty{#1}}{#2}{#1}}{\text{\sffamily\bfseries #2}}}
   {\ifthenelse{\isempty{#1}}
-    {\newoperator{#2}{\text{\sffamily\bfseries #2}}}
-    {\newoperator{#1}{\text{\sffamily\bfseries #2}}}}
+    {\newoperator{#2}{\text{\normalfont\sffamily\bfseries #2}}}
+    {\newoperator{#1}{\text{\normalfont\sffamily\bfseries #2}}}}
 \newmacro{newvalue}[2][1]
   {\ifthenelse{\isempty{#1}}
-    {\newoperator{#2}{\text{\sffamily #2}}}
-    {\newoperator{#1}{\text{\sffamily #2}}}}
+    {\newoperator{#2}{\text{\normalfont\sffamily #2}}}
+    {\newoperator{#1}{\text{\normalfont\sffamily #2}}}}
 \newmacro{newtype}[2][1]
   {\ifthenelse{\isempty{#1}}
-    {\newoperator{#2}{\text{\sffamily\scshape #2}}}
-    {\newoperator{#1}{\text{\sffamily\scshape #2}}}}
+    {\newoperator{#2}{\text{\normalfont\sffamily\scshape #2}}}
+    {\newoperator{#1}{\text{\normalfont\sffamily\scshape #2}}}}
 
 
 %% Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Boxes %%
+
+\newmacro{obox}[2]
+  {\makebox[0pt][l]{\ensuremath{#2}}\phantom{\ensuremath{#1}}}
+
+\newmacro{highlight}[1]
+  {\colorbox{lightgray}{\ensuremath{#1}}}
+
+%% Spacing %%
+
+\newmacro{Quad}
+  {\hspace{1.5em}}
+\newmacro{Break}
+  {\\[\smallskipamount]}
+
+
+
+%% Fractions %%
+
+\newmacro{upon}
+  {\genfrac{}{}{0pt}{0}}
+
+
 
 %% Symbols %%
 
 %% NOTE: change this to \emptyset when using a font that includes a nice standard emptyset
 \let\nothing\varnothing
+
 
 
 %% Braces %%
@@ -162,9 +199,8 @@
 
 \newmathcommand{llbrace}[open] {\{\!|}
 \newmathcommand{rrbrace}[close]{|\!\}}
-\newmathcommand{llangle}[open] {\<\!\<}
-\newmathcommand{rrangle}[close]{\>\!\>}
-
+\newmathcommand{llangle}[open] {\<\!|}
+\newmathcommand{rrangle}[close]{|\!\>}
 
 \newmacro{set}[1]
   {\ensuremath{\{#1\}}}
@@ -176,18 +212,19 @@
 
 \let\lt<
 \let\gt>
-\let\to\rightarrow
 \let\To\Rightarrow
-\let\implies\Rightarrow
-\let\infers\vdash
 
 \newmathcommand{pp}[bin]
   {+\!\!+}
+\newmathcommand{Mid}
+  {\;\mid\;}
 
 
 %% Shortcuts %%
 
-\newmathcommand{powerset}[cal]{P}
+\newmacro{powerset}[1]
+  % {2^{#1}}
+  {\mathcal{P}(#1)}
 
 \newmathcommand{n}{\underline{n}}
 
@@ -205,6 +242,12 @@
 \newmathcommand{BB}  [bb]{B}
 \renewmathcommand{SS}[bb]{S}
 
+\let\to\rightarrow
+% \let\implies\Rightarrow
+% \let\implies\Longrightarrow
+\let\implies\supset
+\let\infers\vdash
+
 
 %% Hints and local definitions %%
 
@@ -215,6 +258,8 @@
   {\mathbf{when}}
 \newmathcommand{where}[op]
   {\mathbf{where}}
+\renewmathcommand{and}[op]
+  {\mathbf{and}}
 \newmathcommand{otherwise}[op]
   {\mathbf{otherwise}}
 \newmathcommand{impossible}[op]
@@ -233,14 +278,49 @@
   {\begin{marginfigure}[#1]\equation\nonumber}
   {\endequation\end{marginfigure}}
 
+
+\newenvironment*{function}
+  {\begin{tabular}{@{}L@{\ \ }C@{\ \ }L@{}}}
+  {\end{tabular}}
+\newmacro{signature}[1]
+  {\multicolumn{3}{@{}L@{}}{#1}}
+\newmacro{inset}[1]
+  {\multicolumn{3}{L}{\quad #1}}
+
+
 \newenvironment*{grammar}
   %%NOTE: the `@{}` suppreses `\tabcolsep` before the first column
   {\begin{block}\begin{tabular}{@{}rRCLl}}
   {\end{tabular}\end{block}}
+\newenvironment*{grammar*}
+  %%NOTE: the `@{}` suppreses `\tabcolsep` before the first column
+  {\begin{block}\begin{tabular}{@{}RLl}}
+  {\end{tabular}\end{block}}
+
 
 
 %% Theorems %%
 
+% \newtheoremstyle{plain}%
+%   {\medskipamount}% space above
+%   {\medskipamount}% space below
+%   {\itshape}% body font
+%   {0pt}% indent amount
+%   {\bfseries}% head font
+%   {.}% punctuation after head
+%   {.5em}% spacing after head
+%   {\thmname{#1}\thmnumber{ #2}\thmnote{ {\normalfont(#3)}}}% head spec
+% \newtheoremstyle{definition}%
+%   {\medskipamount}% space above
+%   {\medskipamount}% space below
+%   {\normalfont}% body font
+%   {0pt}% indent amount
+%   {\bfseries}% head font
+%   {.}% punctuation after head
+%   {.5em}% spacing after head
+%   {\thmname{#1}\thmnumber{ #2}\thmnote{ {\normalfont(#3)}}}% head spec
+%
+%
 % \theoremstyle{acmplain}
 %
 % \newtheorem{theorem}{Theorem}[section]
@@ -248,5 +328,31 @@
 % \newtheorem{proposition}[theorem]{Proposition}
 % \newtheorem{lemma}[theorem]{Lemma}
 % \newtheorem{corollary}[theorem]{Corollary}
+%
+%
+% \theoremstyle{acmdefinition}
+%
 % \newtheorem{example}[theorem]{Example}
 % \newtheorem{definition}[theorem]{Definition}
+
+
+
+%% Inference rules %%
+
+\newmacro{placerule}[4][1,4]
+  {\ensuremath{
+    \upon
+      {\text{\smallcaps{#1}}\hfill}
+      {\dfrac{#2}{#3}\ #4}
+  }}
+
+\newmacro{newrule}[4][4]
+  {\newmacro{#1}{\placerule[#1]{#2}{#3}[#4]}}
+\newmacro{userule}
+  {\usemacro}
+\newmacro{refrule}[1]
+  {\ifthenelse{\isundefined{#1}}
+    {\GenericError{}{Rule `#1` is not defined}{}{}}
+    {\textsc{#1}}}
+% \newmacro{refrule}
+%   {\textsc}
